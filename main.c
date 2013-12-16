@@ -7,24 +7,24 @@
 
 #include <stdio.h>
 #include <stdlib.h>
- 
-/*
- * 
- */
+#include <time.h>
+
+
+
 int main(int argc, char** argv) {
     int i,j;
-    char key[10];  
-    //char *plainText=malloc(sizeof(char)*16);
-    //scanf("%s",plainText);
-    char *plainText="abdwqr,123456789";
-    char *chiffreText=malloc(sizeof(char)*16); 
-    char *z=malloc(sizeof(char)*16);
-    char *a=malloc(sizeof(char)*37);
+    char key[11]="0123456789";  
+    char plainText[17]="abdwqr,123456789";
+    char chiffreText[17];
+    char z[16];
+    char a[36];
+ 
+    SchluesselGenerieren(&key);
+    PlainTextGenerieren(&plainText);
     
-    
-    SchluesselGenerieren(key);
     for(i=0;i<10;i++) 
         a[i]=key[i];
+    
     for (i=0; i<16 ;i++)
     {
         z[i]=(a[i]+a[i+3])%256;
@@ -56,23 +56,68 @@ int main(int argc, char** argv) {
     for(i=0;i<10;i++)
         printf("%d ", key[i]);
     
-    
  /*   free(a);
     free(z);
     free(plainText);
     free(chiffreText);*/
-    
-    
     
     return (EXIT_SUCCESS);
 }
 
 
 
-void SchluesselGenerieren(char key[]){
+void SchluesselGenerieren(char* key){
     int i;
-    key[0]=0;
-    for ( i=1;i<10;i++)
-        key[i]=rand()%256;
+    int wahl;
+    printf("Um Schlüssel als Text einzufügen, drücken Sie \"1\",\n"
+            "um Schlüssel als Byte (Zahl zwischen 0 und 256) einzufügen, drücken Sie \"2\",\n"
+            "um random Schlüssel  zu benutzen, drücken Sie \"3\"\n"
+            "um standart Schlüssel \"0123456789\" zu benutzen, drücken Sie \"4\"\n");
+    scanf("%d", &wahl);
+    switch (wahl)
+    {
+        case 1: 
+            printf("Fügen Sie bitte 10 Symbole ein. Benutzen Sie keine Leerzeichen. ");
+            scanf("%10s", key);//getc(plainText); //funktioniert mit Leerzeichen
+        break;
+        case 2: 
+            for(i=0;i<10;i++)
+            {
+                printf("Fügen Sie bitte %d. Byte ein: ", i);
+                scanf("%d", key[i]); //&
+            }
+        break;
+        case 3:
+          //  srand(time(NULL));
+            for ( i=0;i<10;i++)
+                key[i]=rand()%256;
+        break;
+        default:
+        break; 
+    }
 }
     
+void PlainTextGenerieren(char* plainText){
+    int i;
+    int wahl;
+    printf("Um Klartext als Text einzufügen, drücken Sie \"1\",\n"
+            "um Klartext als Byte (Zahl zwischen 0 und 256) einzufügen, drücken Sie \"2\",\n"
+            "um Klartext \"abdwqr,123456789\" zu benutzen, dücken Sie \"3\"\n");
+    scanf("%d", &wahl);
+    switch (wahl)
+    {
+        case 1: 
+            printf("Fügen Sie bitte 16 Symbole ein. Benutzen Sie keine Leerzeichen. ");
+            scanf("%16s", plainText);//getc(plainText); //funktioniert mit Leerzeichen
+        break;
+        case 2: 
+            for(i=0;i<16;i++)
+            {
+                printf("Fügen Sie bitte %d. Byte ein: ", i);
+                scanf("%d", &plainText[i]); 
+            }
+        break;
+        default:
+        break;    
+    }
+}
