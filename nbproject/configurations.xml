@@ -40,6 +40,11 @@
       <compileType>
       </compileType>
       <item path="angreifer.c" ex="false" tool="0" flavor2="0">
+        <cTool>
+          <incDir>
+            <pElem>/usr/include</pElem>
+          </incDir>
+        </cTool>
       </item>
       <item path="crappy.c" ex="false" tool="0" flavor2="0">
         <cTool>

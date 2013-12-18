@@ -13,24 +13,27 @@ extern void angreifer();
 
 int main(int argc, char** argv) {
     int i,j; 
-    char plainText[17]="1234123412341234";
-    char chiffreText[17];
+    char plainText[17]="2234123412341234";
+    char *chiffreText=malloc(sizeof(char)*17);
+                        //char g[17];
     char z[16];
     char a[36];
     char key[11];
     
     PlainTextGenerieren(&plainText);
-    *chiffreText=crappy(&plainText);
-    //key=angreifer(&plainText, &chiffreText);
+    chiffreText=crappy(plainText);
     
     
-    //Jetzt weiß ich nur chiffreText und plainText
+                        //printf("\nchiffr        : ");       for(i=0;i<16;i++) {    g[i]=chiffreText[i];  printf("%d ", chiffreText[i]);}
+                        //printf("\ngggg        : ");       for(i=0;i<16;i++) {    g[i]=chiffreText[i];  printf("%d ", g[i]);}        
+    //Jetzt beginnt Angreifer zu schachern
     for (i=0; i<16 ;i++)
     {
         z[i]=chiffreText[i]^plainText[i];
     }
-    
-    //key=angreifer(&z);
+                        //printf("\nzzzz       : ");  for(i=0;i<16;i++)   printf("%d ", z[i]);  
+    printf("\n");
+    angreifer(&z);
     
     return (EXIT_SUCCESS);
 }

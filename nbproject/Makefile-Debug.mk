@@ -67,7 +67,7 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/algolabor2: ${OBJECTFILES}
 ${OBJECTDIR}/angreifer.o: angreifer.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/angreifer.o angreifer.c
+	$(COMPILE.c) -g -I/usr/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/angreifer.o angreifer.c
 
 ${OBJECTDIR}/crappy.o: crappy.c 
 	${MKDIR} -p ${OBJECTDIR}

@@ -7,7 +7,7 @@
 
 char* crappy(char* plainText) {
     int i,j;
-    char key[11]="0123456789";
+    char key[11]={0,0,0,0,0,0,0,0,1,0};
     //char plainText[17]="1234123412341234";
     char chiffreText[17];
     char z[16];
@@ -24,7 +24,7 @@ char* crappy(char* plainText) {
         a[i+10]=(a[i]^a[i+5]);//XOR
         for (j=0;j<5;j++)//Rotation >>> 5
         {
-            if((a[i+10]%2)==0)//Rotation >>> 1
+            if((a[i+10]%2)==1)//Rotation >>> 1
             {
                 a[i+10]>>1;
                 a[i+10]+=128;
@@ -78,7 +78,7 @@ void SchluesselGenerieren(char* key){
             for(i=0;i<10;i++)
             {
                 printf("Fügen Sie bitte %d. Byte ein: ", i);
-                scanf("%d", key[i]); //&
+                scanf("%d", &key[i]); //&
             }
         break;
         case 3:
