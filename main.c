@@ -42,14 +42,14 @@ void PlainTextGenerieren(char* plainText){
 
 int main(int argc, char** argv) {
     int i,j;
-    char plainText[17]="2234123412341234";
+    char *plainText ="2234123412341234";
     char *chiffreText=malloc(sizeof(char)*17);
                         //char g[17];
     char z[16];
     char a[36];
     char key[11];
 
-    PlainTextGenerieren(&plainText);
+    PlainTextGenerieren(plainText);
     chiffreText=crappy(plainText);
 
 
@@ -62,7 +62,7 @@ int main(int argc, char** argv) {
     }
                         //printf("\nzzzz       : ");  for(i=0;i<16;i++)   printf("%d ", z[i]);
     printf("\n");
-    angreifer(&z);
+    angreifer(z);
 
     return (EXIT_SUCCESS);
 }
