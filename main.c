@@ -5,7 +5,7 @@
  * Created on 15. Dezember 2013, 01:14
  */
 
-//Es ist noch ganz nicht Ideal, aber alles, was im Hauptteil des Projekts beschrieben ist, funktioniert
+//Es ist noch ganz nicht Ideal, aber alles, was im Hauptteil des Projekts beschrieben ist, funktioniert. Ich denke. Ich hoffe. Meiner Meiung nach.
 //Wenn jemand etwas ändernn möchtet, ich wäre froh
 
 #include <stdio.h>
