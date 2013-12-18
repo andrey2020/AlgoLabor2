@@ -7,12 +7,9 @@ char variant[256];
 char z[17];
 char solution[11][10];
 
-
-
 void angreifer(char* zper)
 {
     int i;
-    char a[36];
     char key[17]="";
     
     for (i=0;i<16;i++)
@@ -31,7 +28,7 @@ void angreifer(char* zper)
 
 
 void rekyr(int nomer, char* key){
-    int k,l,j;
+    int k,j;
     int anzahlSolution=0;
     char byte;
     
@@ -56,8 +53,8 @@ void rekyr(int nomer, char* key){
             return;        
     }
     
-    if (nomer==16)
-    {
+    if (nomer==16)//Müssen wir noch andere Lösungen suchen, nachdem wir schon eine gefunden haben?
+    {             //Jetzt sind alle mögliche Werte geprüft (egal, wie viel Lösungen schon gefunden sind)
         printf("\nLösung     : ");
         for (j=0;j<10;j++)
         {

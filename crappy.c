@@ -7,7 +7,7 @@
 
 char* crappy(char* plainText) {
     int i,j;
-    char key[11]={0,0,0,0,0,0,0,0,1,0};
+    char key[11]={0,0,0,0,0,0,1,2,0,100};
     //char plainText[17]="1234123412341234";
     char chiffreText[17];
     char z[16];
@@ -66,7 +66,7 @@ void SchluesselGenerieren(char* key){
     printf("Um Schlüssel als Text einzufügen, drücken Sie \"1\",\n"
             "um Schlüssel als Byte (Zahl zwischen 0 und 256) einzufügen, drücken Sie \"2\",\n"
             "um random Schlüssel  zu benutzen, drücken Sie \"3\"\n"
-            "um standart Schlüssel \"0123456789\" zu benutzen, drücken Sie \"4\"\n");
+            "um standart Schlüssel '0','0','0','0','0','0','1','2','0','100'\" zu benutzen, drücken Sie \"4\"\n");
     scanf("%d", &wahl);
     switch (wahl)
     {

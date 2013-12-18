@@ -5,10 +5,13 @@
  * Created on 15. Dezember 2013, 01:14
  */
 
+//Es ist noch ganz nicht Ideal, aber alles, was im Hauptteil des Projekts beschrieben ist, funktioniert
+//Wenn jemand etwas ändernn möchtet, ich wäre froh
+
 #include <stdio.h>
 #include <stdlib.h>
-extern char* crappy();
-extern void angreifer();
+extern char* crappy(char*);
+extern void angreifer(char*);
 
 
 int main(int argc, char** argv) {
