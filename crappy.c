@@ -50,7 +50,7 @@ char* crappy(char* plainText) {
     char z[16];
     char a[36];
 
-    SchluesselGenerieren(&key);
+    SchluesselGenerieren(key);
 
     for(i=0;i<10;i++)
         a[i]=key[i];
