@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   main.c
  * Author: anuta
  *
@@ -10,36 +10,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-extern char* crappy(char*);
-extern void angreifer(char*);
+#include "angreifer.h"
+#include "crappy.h"
 
-
-int main(int argc, char** argv) {
-    int i,j; 
-    char plainText[17]="2234123412341234";
-    char *chiffreText=malloc(sizeof(char)*17);
-                        //char g[17];
-    char z[16];
-    char a[36];
-    char key[11];
-    
-    PlainTextGenerieren(&plainText);
-    chiffreText=crappy(plainText);
-    
-    
-                        //printf("\nchiffr        : ");       for(i=0;i<16;i++) {    g[i]=chiffreText[i];  printf("%d ", chiffreText[i]);}
-                        //printf("\ngggg        : ");       for(i=0;i<16;i++) {    g[i]=chiffreText[i];  printf("%d ", g[i]);}        
-    //Jetzt beginnt Angreifer zu schachern
-    for (i=0; i<16 ;i++)
-    {
-        z[i]=chiffreText[i]^plainText[i];
-    }
-                        //printf("\nzzzz       : ");  for(i=0;i<16;i++)   printf("%d ", z[i]);  
-    printf("\n");
-    angreifer(&z);
-    
-    return (EXIT_SUCCESS);
-}
 
 void PlainTextGenerieren(char* plainText){
     int i;
@@ -50,19 +23,46 @@ void PlainTextGenerieren(char* plainText){
     scanf("%d", &wahl);
     switch (wahl)
     {
-        case 1: 
+        case 1:
             printf("Fügen Sie bitte 16 Symbole ein. Benutzen Sie keine Leerzeichen. ");
             scanf("%16s", plainText);//getc(plainText); //funktioniert mit Leerzeichen
         break;
-        case 2: 
+        case 2:
             for(i=0;i<16;i++)
             {
                 printf("Fügen Sie bitte %d. Byte ein: ", i);
-                scanf("%d", &plainText[i]); 
+                scanf("%d", &plainText[i]);
             }
         break;
         default:
-        break;    
+        break;
     }
     printf("\n");
+}
+
+int main(int argc, char** argv) {
+    int i,j;
+    char plainText[17]="2234123412341234";
+    char *chiffreText=malloc(sizeof(char)*17);
+                        //char g[17];
+    char z[16];
+    char a[36];
+    char key[11];
+
+    PlainTextGenerieren(&plainText);
+    chiffreText=crappy(plainText);
+
+
+                        //printf("\nchiffr        : ");       for(i=0;i<16;i++) {    g[i]=chiffreText[i];  printf("%d ", chiffreText[i]);}
+                        //printf("\ngggg        : ");       for(i=0;i<16;i++) {    g[i]=chiffreText[i];  printf("%d ", g[i]);}
+    //Jetzt beginnt Angreifer zu schachern
+    for (i=0; i<16 ;i++)
+    {
+        z[i]=chiffreText[i]^plainText[i];
+    }
+                        //printf("\nzzzz       : ");  for(i=0;i<16;i++)   printf("%d ", z[i]);
+    printf("\n");
+    angreifer(&z);
+
+    return (EXIT_SUCCESS);
 }
