@@ -7,37 +7,17 @@ char variant[256];
 char z[17];
 char solution[11][10];
 
-void angreifer(char* zper)
-{
-    int i;
-    char key[17]="";
-    
-    for (i=0;i<16;i++)
-    {
-        z[i]=zper[i];
-    }
-    
-    for (i=0;i<256;i++)//Array von alle mögliche Byten
-    {
-        variant[i]=i;
-    }
-    
-    rekyr(0, key);
-    
-}
-
-
 void rekyr(int nomer, char* key){
     int k,j;
     int anzahlSolution=0;
     char byte;
-    
+
     if (nomer>3)
     {
         if (((key[nomer]+key[nomer-3])%256)!=z[nomer-3])
             return;
     }
-    
+
     if (nomer>10)
     {
         byte=key[nomer-5]^key[nomer-10];
@@ -47,12 +27,12 @@ void rekyr(int nomer, char* key){
             {
                 byte>>1;
                 byte+=128;
-            }else  byte>>1;  
-        }  
+            }else  byte>>1;
+        }
         if (byte!=key[nomer])
-            return;        
+            return;
     }
-    
+
     if (nomer==16)//Müssen wir noch andere Lösungen suchen, nachdem wir schon eine gefunden haben?
     {             //Jetzt sind alle mögliche Werte geprüft (egal, wie viel Lösungen schon gefunden sind)
         printf("\nLösung     : ");
@@ -70,9 +50,26 @@ void rekyr(int nomer, char* key){
     for(k=0;k<256;k++)
     {
         key[nomer]=variant[k];
-        
+
         rekyr(nomer,key);
     }
 }
 
+void angreifer(char* zper)
+{
+    int i;
+    char key[17]="";
 
+    for (i=0;i<16;i++)
+    {
+        z[i]=zper[i];
+    }
+
+    for (i=0;i<256;i++)//Array von alle mögliche Byten
+    {
+        variant[i]=i;
+    }
+
+    rekyr(0, key);
+
+}
