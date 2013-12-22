@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include "angreifer.h"
 #include "crappy.h"
+#include "angreifer2.h"
 
 
 void PlainTextGenerieren(char* plainText){
@@ -25,13 +26,13 @@ void PlainTextGenerieren(char* plainText){
     {
         case 1:
             printf("Fügen Sie bitte 16 Symbole ein. Benutzen Sie keine Leerzeichen. ");
-            scanf("%16s", plainText);//getc(plainText); //funktioniert mit Leerzeichen
+            scanf("%s", plainText);//plötzlich  funktioniert nicht mehr
         break;
         case 2:
             for(i=0;i<16;i++)
             {
                 printf("Fügen Sie bitte %d. Byte ein: ", i);
-                scanf("%d", &plainText[i]);
+                scanf("%d", &plainText[i]);//plötzlich  funktioniert nicht mehr
             }
         break;
         default:
@@ -45,8 +46,7 @@ int main(int argc, char** argv) {
     char *plainText ="2234123412341234";
     char *chiffreText=malloc(sizeof(char)*17);
     char z[16];
-    char a[36];
-    char key[11];
+    int wahl;
 
     PlainTextGenerieren(plainText);
     chiffreText=crappy(plainText);
@@ -57,8 +57,19 @@ int main(int argc, char** argv) {
         z[i]=chiffreText[i]^plainText[i];
     }
     printf("\n");
-    angreifer(z);
-
+    printf("Um Angreifer Basis-Algorithmus (Backtracking) zu beutzen, drücken Sie \"1\",\n"
+            "um schneller Angreifer-Algorithmus aus Bonusaufgabe 1 zu beutzen, drücken Sie \"2\",\n");
+    scanf("%d", &wahl);
+    switch (wahl)
+    {
+        case 1:
+              angreifer(z);
+        break;
+        default:
+              angreifer2(z);
+        break;
+    }
+    
         //Muss Speicherplatz freigegeben wird?
  /*   free(a);
   *   free(z);

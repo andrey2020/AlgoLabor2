@@ -13,6 +13,7 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>angreifer.c</itemPath>
+      <itemPath>angreifer2.c</itemPath>
       <itemPath>crappy.c</itemPath>
       <itemPath>main.c</itemPath>
     </logicalFolder>
@@ -27,6 +28,7 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>angreifer2.h</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -45,6 +47,10 @@
             <pElem>/usr/include</pElem>
           </incDir>
         </cTool>
+      </item>
+      <item path="angreifer2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="angreifer2.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="crappy.c" ex="false" tool="0" flavor2="0">
         <cTool>
@@ -78,6 +84,10 @@
         </asmTool>
       </compileType>
       <item path="angreifer.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="angreifer2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="angreifer2.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="crappy.c" ex="false" tool="0" flavor2="0">
       </item>

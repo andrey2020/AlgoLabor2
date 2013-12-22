@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/angreifer.o \
+	${OBJECTDIR}/angreifer2.o \
 	${OBJECTDIR}/crappy.o \
 	${OBJECTDIR}/main.o
 
@@ -68,6 +69,11 @@ ${OBJECTDIR}/angreifer.o: angreifer.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.c) -g -I/usr/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/angreifer.o angreifer.c
+
+${OBJECTDIR}/angreifer2.o: angreifer2.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/angreifer2.o angreifer2.c
 
 ${OBJECTDIR}/crappy.o: crappy.c 
 	${MKDIR} -p ${OBJECTDIR}

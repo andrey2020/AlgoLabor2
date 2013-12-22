@@ -10,7 +10,7 @@ void SchluesselGenerieren(char* key){
     printf("Um Schlüssel als Text einzufügen, drücken Sie \"1\",\n"
             "um Schlüssel als Byte (Zahl zwischen 0 und 256) einzufügen, drücken Sie \"2\",\n"
             "um random Schlüssel  zu benutzen, drücken Sie \"3\"\n"
-            "um standart Schlüssel '0','0','0','0','0','0','1','2','0','100'\" zu benutzen, drücken Sie \"4\"\n");
+            "um standart Schlüssel '1','0','0','0','0','1','1','2','0','100'\" zu benutzen, drücken Sie \"4\"\n");
     scanf("%d", &wahl);
     switch (wahl)
     {
@@ -41,7 +41,7 @@ void SchluesselGenerieren(char* key){
  */
 char* crappy(char* plainText) {
     int i,j;
-    char key[11]={0,0,0,0,0,1,1,2,0,100};
+    char key[11]={1,0,0,0,0,1,1,2,0,100};
     /* Da der Pointer am Ende der Funktion zurückgegeben wird und wir noch Zugriff
      * auf den Inhalt des character-Arrays haben möchten, muss das Array auf dem Heap,
      * nicht auf dem Stack erstellt werden. */
