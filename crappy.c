@@ -16,7 +16,7 @@ void SchluesselGenerieren(char* key){
     {
         case 1:
             printf("Fügen Sie bitte 10 Symbole ein. Benutzen Sie keine Leerzeichen. ");
-            scanf("%10s", key);//oder getc(plainText); - funktioniert mit Leerzeichen
+            scanf("%10s", key);
         break;
         case 2:
             for(i=0;i<10;i++)
@@ -91,11 +91,6 @@ char* crappy(char* plainText) {
     printf("\nSchlüssel  : ");
     for(i=0;i<10;i++)
         printf("%d ", key[i]);
-
-    //Muss Speicherplatz freigegeben wird?
- /*   free(a);
-    free(z);
-  */
 
     return chiffreText;
 }

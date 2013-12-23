@@ -5,7 +5,10 @@
 
 char variant[256];
 char z[17];
-char solution[11][10];//es wäre gut, wenn hier ein halb-dynamisches Array wäre. Etwas wie z.B. *solution[11]
+
+//hier kann die Lösung gespeichert werden
+//es wäre gut, wenn hier ein halb-dynamisches Array wäre. Etwas wie z.B. *solution[11]
+char solution[11][10];
 int countSolution=0;
 
 //Die Name von diese Funktion zeigt, was eigentlich bedeutet "Rekursion"
@@ -48,14 +51,13 @@ void recursionWithTheMostBeautifulNameRecursionWithThe(int number, char* key){
                     //Jetzt sind alle mögliche Werte geprüft (egal, wie viel Lösungen schon gefunden sind)
     {
         printf("\nLösung     : ");
-        if (countSolution>=10) return;//wegen nicht dynamische Array solution[11][10]. Wie speichern nur die erste 10 Lösungen.
-        for (j=0;j<10;j++)//kann man das irgendwie ohne Schleifen machen?  Wie z.B. einfach solution[countSolution]=key;
+        for (j=0;j<10;j++)
         {
-            solution[countSolution][j]=key[j];
+            //solution[countSolution][j]=key[j];
             printf("%d ", key[j]);
         }
         printf("\n");
-        countSolution++;
+        //countSolution++;
         return;
     }
 /*    
@@ -74,7 +76,6 @@ void angreifer(char* zper)
 {
     int i;
     char key[17]="";
-
     for (i=0;i<16;i++)//kann man das irgendwie ohne Schleifen machen?  Wie z.B. einfach z=zper
     {
         z[i]=zper[i];
