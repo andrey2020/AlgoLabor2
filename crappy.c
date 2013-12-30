@@ -1,5 +1,4 @@
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -57,7 +56,7 @@ char* crappy(char* plainText) {
                                         for(i=0;i<10;i++) fuerDebug[i]=key[i];
     for (i=0; i<16 ;i++)
     {
-        z[i]=(a[i%10]+a [(i+3)%10] ) % 256;
+        z[i]=(a[i%10] ^ a[(i+3)%10]) % 256;         // z[i] = a[i] XOR a[i+3]
         a [(i+10)%10] = (a[i%10]^a [(i+5)%10] );
         //Rotation >>> 5
         for (j=0;j<5;j++)
