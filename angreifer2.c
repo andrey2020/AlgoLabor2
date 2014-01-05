@@ -7,11 +7,6 @@ void angreifer2(char* z)
     int passt=0;
     char byte, temp;
     char key[17]="";
-        
-    //hier kann die Lösung gespeichert werden
-    //es wäre gut, wenn hier ein halb-dynamisches Array wäre. Etwas wie z.B. *solution[11]
-    char solution[11][10];
-    int countSolution=0;
 
     for(k=0;k<256;k++)
     {

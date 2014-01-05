@@ -26,7 +26,6 @@ void SchluesselGenerieren(char* key){
             }
         break;
         case 3:
-          //  srand(time(NULL)); ohne diese Zeile immer die gleiche Zufallszahlen
             for ( i=0;i<10;i++)
                 key[i]=rand()%256;
         break;
@@ -49,13 +48,11 @@ char* crappy(char* plainText) {
     char z[16];
     char a[10];
     char temp;
-                                        char fuerDebug[27];
 
     SchluesselGenerieren(key);
 
     for(i=0;i<10;i++)
         a[i]=key[i];
-                                        for(i=0;i<10;i++) fuerDebug[i]=key[i];
     for (i=0; i<16 ;i++)
     {
         z[i]=(a[i%10]+a [(i+3)%10] ) % 256;
@@ -66,9 +63,8 @@ char* crappy(char* plainText) {
         a[(i+10)%10] = a[(i+10)%10] * 8;  // 8 = 2^3         a = 54321000
         temp = temp / 20;                 // 32 = 2^5        temp = 876
         a[(i+10)%10] = a[(i+10)%10] ^ temp;               // a = 54321876
-                                        fuerDebug [i+10]= a [(i+10)%10];
+
         chiffreText[i]=plainText[i]^z[i];
-        //printf("%d   %d = %d XOR %d \n",i,chiffreText[i], plainText[i], z[i]);
     }
     printf("\nKlartext   : ");
     for(i=0;i<16;i++)
@@ -82,12 +78,9 @@ char* crappy(char* plainText) {
     printf("\nSchlüsselA : ");
     for(i=0;i<10;i++)
         printf("%d ",  a[i]);
-                                        printf("\nFür Debug  : ");
-                                        for(i=0;i<27;i++)
-                                            printf("%d ",  fuerDebug[i]);
     printf("\nSchlüssel  : ");
     for(i=0;i<10;i++)
         printf("%d ", key[i]);
-
+    
     return chiffreText;
 }
