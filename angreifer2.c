@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -27,7 +26,7 @@ void angreifer2(char* z)
                 {
                     key[n]=(z[n-3]-key[n-3])%256;
                 }
-                while ((n<16)&&(passt==0))
+                while ((n<19)&&(passt==0))
                 {
                     key[n]=(z[n-3]-key[n-3])%256;
                     byte=key[n-5]^key[n-10];
@@ -43,7 +42,7 @@ void angreifer2(char* z)
                         passt=1;
                     n++;
                 }
-                if ((n==16)&&(passt==0))
+                if (passt==0)
                 {
                     printf("\nLösung     : ");
                     for (n=0;n<10;n++)
