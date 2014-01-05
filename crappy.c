@@ -48,7 +48,6 @@ char* crappy(char* plainText) {
     char *chiffreText = malloc(sizeof(char)*17);
     char z[16];
     char a[10];
-    char temp;
                                         char fuerDebug[27];
 
     SchluesselGenerieren(key);
@@ -61,11 +60,15 @@ char* crappy(char* plainText) {
         z[i]=(a[i%10]+a [(i+3)%10] ) % 256;
         a [(i+10)%10] = (a[i%10]^a [(i+5)%10] );
         //Rotation >>> 5
-        temp = a[(i+10)%10];                              // a = temp = 87654321
-        a[(i+10)%10] = temp % 20;         // 32 = 2^5        a = 54321
-        a[(i+10)%10] = a[(i+10)%10] * 8;  // 8 = 2^3         a = 54321000
-        temp = temp / 20;                 // 32 = 2^5        temp = 876
-        a[(i+10)%10] = a[(i+10)%10] ^ temp;               // a = 54321876
+        for (j=0;j<5;j++)
+        {
+            //Rotation >>> 1
+            if((a [(i+10)%10] % 2)==1)
+            {
+                a [(i+10)%10] >> 1;
+                a [(i+10)%10] += 128;
+            }else  a [(i+10)%10] >> 1;
+        }
                                         fuerDebug [i+10]= a [(i+10)%10];
         chiffreText[i]=plainText[i]^z[i];
         //printf("%d   %d = %d XOR %d \n",i,chiffreText[i], plainText[i], z[i]);

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 char variant[256];
 char z[17];
 
@@ -14,28 +15,31 @@ int countSolution=0;
 //Wenn jemand weiß bessere Name für diese Funktion, biete ich um die Umbenennung
 void recursionWithTheMostBeautifulNameRecursionWithThe(int number, char* key){
     int k,j;
-    char byte, temp;
+    char byte;
 /*
  * Backtracking - prüfen, ob z[i]=(a[i]+a[i+3])%256;
  */
-    if (number > 3)
+    if (number>3)
     {
-        if (((key[number] + key[number-3]) % 256) != z[number-3])
+        if (((key[number]+key[number-3])%256)!=z[number-3])
             return;
     }
 /*
  * Backtracking - prüfen, ob a[i+10]=(a[i]^a[i+5]);
  */
-    if (number > 10)
+    if (number>10)
     {
         byte=key[number-5]^key[number-10];
         //Rotation >>> 5
-        temp = byte;                                    // a = temp = 87654321
-        byte = temp % 20;                 //32 = 2^5       a = 54321
-        byte = byte * 8;                  // 8 = 2^3       a = 54321000
-        temp = temp / 20;                 // 32 = 2^5      temp = 876
-        byte = byte ^ temp;                             // a = 54321876
-        
+        for (j=0;j<5;j++)
+        {
+            //Rotation >>> 1
+            if((byte%2)==1)
+            {
+                byte>>1;
+                byte+=128;
+            }else  byte>>1;
+        }
         if (byte!=key[number])
             return;
     }
